@@ -1,0 +1,82 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isStaff() {
+      return request.auth != null && request.auth.token.staff == true;
+    }
+
+    function resourceIsActive(resourceId) {
+      let resourcePath = /databases/(default)/documents/resources/$(resourceId);
+      return firestore.exists(resourcePath)
+        && firestore.get(resourcePath).data.status in ['draft', 'published'];
+    }
+
+    function releaseIsDraft(resourceId, releaseId) {
+      let releasePath = /databases/(default)/documents/resources/$(resourceId)/releases/$(releaseId);
+      return firestore.exists(releasePath)
+        && firestore.get(releasePath).data.status == 'draft';
+    }
+
+    function releaseIsPublished(resourceId, releaseId) {
+      let resourcePath = /databases/(default)/documents/resources/$(resourceId);
+      let releasePath = /databases/(default)/documents/resources/$(resourceId)/releases/$(releaseId);
+      return firestore.exists(resourcePath)
+        && firestore.get(resourcePath).data.status == 'published'
+        && firestore.exists(releasePath)
+        && firestore.get(releasePath).data.status == 'published';
+    }
+
+    match /resources/{resourceId}/releases/{releaseId}/artifact.zip {
+      allow read: if isStaff()
+        || (request.auth != null && releaseIsPublished(resourceId, releaseId));
+      allow create, update: if isStaff()
+        && resourceIsActive(resourceId)
+        && releaseIsDraft(resourceId, releaseId)
+        && request.resource.size > 0
+        && request.resource.size <= 52428800
+        && request.resource.contentType == 'application/zip';
+      allow delete: if isStaff() && releaseIsDraft(resourceId, releaseId);
+    }
+
+    match /resources/{resourceId}/releases/{releaseId}/build.apk {
+      allow read: if isStaff()
+        || (request.auth != null && releaseIsPublished(resourceId, releaseId));
+      allow create, update: if isStaff()
+        && resourceIsActive(resourceId)
+        && releaseIsDraft(resourceId, releaseId)
+        && request.resource.size > 0
+        && request.resource.size <= 52428800
+        && request.resource.contentType == 'application/vnd.android.package-archive';
+      allow delete: if isStaff() && releaseIsDraft(resourceId, releaseId);
+    }
+
+    match /resources/{resourceId}/releases/{releaseId}/build.aab {
+      allow read: if isStaff()
+        || (request.auth != null && releaseIsPublished(resourceId, releaseId));
+      allow create, update: if isStaff()
+        && resourceIsActive(resourceId)
+        && releaseIsDraft(resourceId, releaseId)
+        && request.resource.size > 0
+        && request.resource.size <= 52428800
+        && request.resource.contentType == 'application/octet-stream';
+      allow delete: if isStaff() && releaseIsDraft(resourceId, releaseId);
+    }
+
+    match /resources/{resourceId}/releases/{releaseId}/source.zip {
+      allow read: if isStaff()
+        || (request.auth != null && releaseIsPublished(resourceId, releaseId));
+      allow create, update: if isStaff()
+        && resourceIsActive(resourceId)
+        && releaseIsDraft(resourceId, releaseId)
+        && request.resource.size > 0
+        && request.resource.size <= 52428800
+        && request.resource.contentType == 'application/zip';
+      allow delete: if isStaff() && releaseIsDraft(resourceId, releaseId);
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

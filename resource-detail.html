@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0912">
+    <meta name="description" content="View a reviewed, versioned resource from Desalu Engineering.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Resource details | Desalu Engineering">
+    <meta property="og:description" content="View a reviewed, versioned resource from Desalu Engineering.">
+    <meta property="og:image" content="">
+    <title>Resource details | Desalu Engineering</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resources.css">
+    <script type="module" src="resources.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav page-width" aria-label="Main navigation">
+            <a class="brand" href="index.html" aria-label="Desalu Engineering home">
+                <span class="brand-mark" aria-hidden="true">D</span>
+                <span>DESALU<span class="brand-light"> ENGINEERING</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="resources.html">Resource library</a>
+                <a href="auth.html">My workspace</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="resource-main page-width resource-detail-main">
+        <a class="text-link resource-back-link" href="resources.html">← Back to all resources</a>
+        <section class="resource-catalog" aria-labelledby="resource-detail-heading">
+            <div class="resource-catalog-heading">
+                <div>
+                    <p class="eyebrow">REVIEWED, VERSIONED RELEASE</p>
+                    <h1 id="resource-detail-heading">Resource details</h1>
+                </div>
+                <a class="text-link" href="auth.html">Open my workspace <span aria-hidden="true">↗</span></a>
+            </div>
+            <p class="resource-status" id="resource-status" role="status" aria-live="polite">Loading approved resource…</p>
+            <div class="resource-grid" id="resource-grid"></div>
+        </section>
+    </main>
+
+    <template id="resource-card-template">
+        <article class="resource-card">
+            <img class="resource-icon" alt="" loading="lazy" hidden>
+            <div class="resource-card-top">
+                <span class="resource-type"></span>
+                <span class="resource-license"></span>
+            </div>
+            <h3 class="resource-title"><a class="resource-detail-link"></a></h3>
+            <p class="resource-summary"></p>
+            <p class="resource-developer"></p>
+            <ul class="resource-tags" aria-label="Resource tags"></ul>
+            <dl class="resource-details">
+                <div><dt>Version</dt><dd class="resource-version"></dd></div>
+                <div class="resource-wordpress-detail"><dt>WordPress</dt><dd class="resource-wordpress"></dd></div>
+                <div class="resource-wordpress-detail"><dt>PHP</dt><dd class="resource-php"></dd></div>
+                <div><dt>Package</dt><dd class="resource-size"></dd></div>
+            </dl>
+            <details class="resource-setup" open>
+                <summary>Requirements &amp; setup</summary>
+                <p class="resource-requirements"></p>
+                <p class="resource-setup-copy"></p>
+                <p class="resource-changelog"></p>
+                <p class="resource-checksum"></p>
+            </details>
+            <div class="resource-screenshots" aria-label="Screenshots"></div>
+            <div class="resource-external-links"></div>
+            <div class="resource-card-actions">
+                <button class="button button-outline resource-bookmark" type="button">Bookmark</button>
+                <div class="resource-downloads"></div>
+            </div>
+            <section class="resource-report" hidden aria-labelledby="resource-report-heading">
+                <h2 id="resource-report-heading">Report a problem</h2>
+                <p>Reports are linked to your signed-in account for staff review. Deleting your account removes your reports, including resolved reports. Do not include passwords or private personal information.</p>
+                <form class="resource-report-form">
+                    <label>
+                        Issue
+                        <select name="reason" required>
+                            <option value="broken-download">Broken download</option>
+                            <option value="security-concern">Security concern</option>
+                            <option value="license-concern">License concern</option>
+                            <option value="incorrect-information">Incorrect information</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </label>
+                    <label>
+                        Details
+                        <textarea name="message" rows="4" minlength="10" maxlength="2000" required></textarea>
+                    </label>
+                    <button class="button button-outline" type="submit">Send report</button>
+                </form>
+                <p class="resource-report-status" role="status" aria-live="polite"></p>
+            </section>
+            <p class="resource-card-status" role="status" aria-live="polite"></p>
+        </article>
+    </template>
+</body>
+</html>

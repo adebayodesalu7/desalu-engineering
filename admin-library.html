@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0912">
+    <title>Resource manager | Desalu Engineering</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin-dashboard.css">
+    <link rel="stylesheet" href="admin-library.css">
+    <script type="module" src="admin-dashboard.js"></script>
+    <script type="module" src="admin-library.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav page-width" aria-label="Staff navigation">
+            <a class="brand" href="index.html" aria-label="Desalu Engineering home">
+                <span class="brand-mark" aria-hidden="true">D</span>
+                <span>DESALU<span class="brand-light"> ENGINEERING</span></span>
+            </a>
+            <div class="admin-nav-actions">
+                <a class="text-link" href="admin-dashboard.html">Admin dashboard <span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="admin-resources.html">Publish resource <span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="resources.html">View library <span aria-hidden="true">↗</span></a>
+                <button class="button button-outline admin-signout" id="admin-dashboard-signout" type="button" hidden>Sign out</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="admin-main page-width staff-dashboard-main">
+        <section class="admin-welcome" aria-labelledby="resource-manager-title">
+            <div class="admin-heading">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> DESALU ENGINEERING / PRODUCT LIBRARY</p>
+                    <h1 id="resource-manager-title">Resource manager</h1>
+                    <p>Review resources, inspect release history, and safely manage publication status and storage.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="staff-dashboard-content" id="staff-dashboard-content" hidden aria-label="Resource manager tools">
+            <p class="admin-status" id="admin-dashboard-status" role="status" aria-live="polite"></p>
+            <nav class="dashboard-section-nav" aria-label="Dashboard sections">
+                <a href="admin-dashboard.html">Overview</a>
+                <a href="admin.html">Inquiries</a>
+                <a href="admin-resources.html">Publishing</a>
+                <a href="admin-library.html" aria-current="page">Resources</a>
+                <a href="admin-review.html">Review queue</a>
+            </nav>
+
+            <section class="library-storage-panel" aria-labelledby="library-storage-title">
+                <div class="dashboard-section-heading">
+                    <div>
+                        <p class="eyebrow">PRIVATE STORAGE</p>
+                        <h2 id="library-storage-title">Storage overview</h2>
+                    </div>
+                    <button class="button button-outline library-storage-scan" id="library-storage-scan" type="button">Scan storage</button>
+                </div>
+                <p class="library-storage-note">A scan checks release objects against every recorded release path. Cleanup only offers unreferenced release files.</p>
+                <div class="library-storage-metrics" aria-label="Storage usage">
+                    <div><span>Files</span><strong id="library-storage-files">Not scanned</strong></div>
+                    <div><span>Used</span><strong id="library-storage-used">Not scanned</strong></div>
+                    <div><span>Unreferenced release files</span><strong id="library-storage-orphans">Not scanned</strong></div>
+                </div>
+                <p class="admin-status library-storage-status" id="library-storage-status" role="status" aria-live="polite"></p>
+                <button class="button button-outline library-cleanup-button" id="library-storage-cleanup" type="button" disabled>Remove unreferenced files</button>
+            </section>
+
+            <section class="library-resource-section" aria-labelledby="library-resources-title">
+                <div class="dashboard-section-heading">
+                    <div>
+                        <p class="eyebrow">CATALOG MANAGEMENT</p>
+                        <h2 id="library-resources-title">Resources and releases</h2>
+                    </div>
+                    <a class="dashboard-inline-link" href="admin-resources.html">Publish a resource <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="library-filter-bar">
+                    <label class="library-search-label" for="library-search">Search resources</label>
+                    <input id="library-search" type="search" placeholder="Name, ID, summary, or author">
+                    <label for="library-status-filter">Status</label>
+                    <select id="library-status-filter">
+                        <option value="all">All statuses</option>
+                        <option value="published">Published</option>
+                        <option value="draft">Draft</option>
+                        <option value="retired">Retired</option>
+                    </select>
+                    <label for="library-type-filter">Type</label>
+                    <select id="library-type-filter">
+                        <option value="all">All types</option>
+                        <option value="wordpress-theme">WordPress theme</option>
+                        <option value="wordpress-plugin">WordPress plugin</option>
+                        <option value="android-app">Android app</option>
+                        <option value="ios-app">iOS app</option>
+                        <option value="html-css">HTML / CSS / JS</option>
+                    </select>
+                </div>
+                <p class="admin-status library-list-status" id="library-list-status" role="status" aria-live="polite">Loading resources…</p>
+                <div class="library-resource-list" id="library-resource-list" aria-live="polite"></div>
+            </section>
+        </section>
+
+        <section class="staff-dashboard-gate" id="admin-dashboard-gate">
+            <p class="admin-status" id="admin-dashboard-status-gate" role="status" aria-live="polite">Checking your staff access…</p>
+            <a class="button" id="admin-dashboard-signin" href="auth.html" hidden>Sign in to the staff account</a>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,205 @@
+.resource-admin-main {
+    padding-bottom: 6rem;
+}
+
+.resource-publish-panel {
+    margin-top: 2rem;
+    padding: clamp(1rem, 4vw, 2.2rem);
+    border: 1px solid rgb(255 255 255 / 12%);
+    border-radius: 18px;
+    background: linear-gradient(145deg, #18141f, #110f17);
+}
+
+.resource-publish-form {
+    display: grid;
+    gap: 1.4rem;
+}
+
+.resource-publish-form[hidden] {
+    display: none !important;
+}
+
+.resource-publish-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.resource-publish-grid label {
+    display: grid;
+    align-content: start;
+    gap: 0.45rem;
+    color: #e6e0ec;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.resource-publish-grid input,
+.resource-publish-grid select,
+.resource-publish-grid textarea {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid #3a3446;
+    border-radius: 9px;
+    padding: 0.75rem;
+    background: #100e16;
+    color: #f6f3ff;
+    font: inherit;
+    font-size: 0.88rem;
+}
+
+.resource-publish-grid input[type='file'] {
+    padding: 0.6rem;
+}
+
+.resource-publish-grid textarea {
+    resize: vertical;
+}
+
+.resource-publish-grid small {
+    color: #a39caf;
+    font-size: 0.73rem;
+    font-weight: 400;
+    line-height: 1.45;
+}
+
+.resource-field-wide {
+    grid-column: 1 / -1;
+}
+
+.resource-review-attestation {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    color: #c8c1d0;
+    font-size: 0.82rem;
+    line-height: 1.55;
+}
+
+.resource-review-attestation input {
+    flex: 0 0 auto;
+    margin-top: 0.2rem;
+    accent-color: #a65be8;
+}
+
+.resource-publish-status {
+    min-height: 1.4em;
+    margin: 0;
+    color: #9be5bf;
+    font-size: 0.85rem;
+}
+
+.resource-publish-status[data-kind='error'] {
+    color: #ff9ba8;
+}
+
+.resource-publish-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.resource-publish-actions button {
+    cursor: pointer;
+}
+
+.resource-publish-actions button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+@media (max-width: 700px) {
+    .resource-publish-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .resource-field-wide {
+        grid-column: auto;
+    }
+}
+.resource-release-preview {
+    display: grid;
+    gap: 0.45rem;
+    margin: 1rem 0;
+    padding: clamp(1rem, 2.5vw, 1.35rem);
+    border: 1px solid rgb(192 122 236 / 22%);
+    border-radius: 14px;
+    background:
+        radial-gradient(ellipse at 100% 0%, rgb(164 83 210 / 11%), transparent 52%),
+        rgb(8 7 13 / 38%);
+}
+
+.resource-release-preview .eyebrow {
+    margin: 0;
+    color: #b59bc9;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.resource-release-preview h2 {
+    margin: 0 0 0.25rem;
+    font-family: Manrope, sans-serif;
+    font-size: 1.2rem;
+}
+
+.resource-preview-name {
+    color: #f6f3ff;
+    font-family: Manrope, sans-serif;
+    font-size: 1rem;
+}
+
+.resource-preview-version,
+.resource-release-preview p,
+.resource-release-preview dd,
+.resource-release-preview dt {
+    color: #c6c0d0;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.resource-release-preview p {
+    margin: 0.2rem 0;
+}
+
+.resource-release-preview dl {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0.45rem 0;
+}
+
+.resource-release-preview dl > div {
+    display: grid;
+    grid-template-columns: minmax(90px, 0.25fr) minmax(0, 1fr);
+    gap: 0.65rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgb(255 255 255 / 7%);
+}
+
+.resource-release-preview dt {
+    color: #aaa5bb;
+    font-weight: 700;
+}
+
+.resource-release-preview dd {
+    margin: 0;
+}
+
+.resource-preview-note {
+    color: #b59bc9 !important;
+}
+
+.resource-preview-guide-link {
+    width: fit-content;
+    color: #dab4f0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.resource-preview-guide-link:focus-visible {
+    outline: 2px solid #e8bcff;
+    outline-offset: 3px;
+}

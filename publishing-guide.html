@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0912">
+    <meta name="description" content="Step-by-step publishing requirements for Android apps, WordPress themes and plugins, iOS apps, and web projects in the Desalu resource library.">
+    <title>Publishing instructions | Desalu Engineering</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="publishing-guide.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav page-width" aria-label="Publishing guide navigation">
+            <a class="brand" href="index.html" aria-label="Desalu Engineering home">
+                <span class="brand-mark" aria-hidden="true">D</span>
+                <span>DESALU<span class="brand-light"> ENGINEERING</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="admin-resources.html">Publishing dashboard</a>
+                <a href="admin-library.html">Resource manager</a>
+                <a href="resources.html">Public library</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="publishing-guide-main page-width">
+        <header class="publishing-guide-intro">
+            <p class="eyebrow"><span class="eyebrow-dot"></span> STAFF PUBLISHING HANDBOOK</p>
+            <h1>Prepare a release the right way.</h1>
+            <p>Use the matching checklist before opening the upload form. Every release is reviewed, versioned, and shown in the public library only after it passes the publishing checks.</p>
+            <nav class="publishing-guide-index" aria-label="Publishing instruction sections">
+                <a href="#common-checklist">Before every upload</a>
+                <a href="#android">Android app</a>
+                <a href="#wordpress-theme">WordPress theme</a>
+                <a href="#wordpress-plugin">WordPress plugin</a>
+                <a href="#ios">iOS app</a>
+                <a href="#web">Web project</a>
+            </nav>
+        </header>
+
+        <section class="publishing-guide-section" id="common-checklist" aria-labelledby="common-checklist-title">
+            <p class="eyebrow">REQUIRED FOR ALL RELEASES</p>
+            <h2 id="common-checklist-title">Before every upload</h2>
+            <ol class="publishing-steps">
+                <li><strong>Confirm distribution rights.</strong> You must own the work or have permission to redistribute it, including its images, fonts, libraries, and other bundled assets. State the actual license; do not guess.</li>
+                <li><strong>Remove private material.</strong> Exclude passwords, API keys, signing files, environment files, private certificates, customer data, personal data, and client-only content. Never upload an Android signing keystore or its passwords.</li>
+                <li><strong>Prepare the listing information.</strong> Provide a clear title, unique lowercase resource ID, author/publisher, short description, license, version, platform/runtime requirements, installation steps, and release notes.</li>
+                <li><strong>Use the right version.</strong> Reuse the resource ID for updates and provide a new version for each release. Do not replace or reuse an already published version.</li>
+                <li><strong>Test the exact package.</strong> Install or run the selected archive on a clean, compatible environment and verify the setup instructions match the package.</li>
+                <li><strong>Use public HTTPS media links carefully.</strong> Icon and screenshot URLs are shown to library visitors; the image host may receive visitor connection data. Use a trusted host and only images approved for public display.</li>
+                <li><strong>Respect the file limit.</strong> Each uploaded file must be no larger than 50 MiB. Android builds and their source ZIP are separate files and each has its own limit.</li>
+                <li><strong>Review the preview.</strong> Check the public-facing title, description, version, requirements, and selected files before confirming the review attestation and publishing.</li>
+            </ol>
+        </section>
+
+        <section class="publishing-guide-section" id="android" aria-labelledby="android-guide-title">
+            <div class="publishing-guide-title">
+                <span class="publishing-guide-icon" aria-hidden="true">A</span>
+                <div><p class="eyebrow">ANDROID</p><h2 id="android-guide-title">Publish an Android app</h2></div>
+            </div>
+            <ol class="publishing-steps">
+                <li>Build a release APK for direct installation, or an AAB for Google Play distribution. An AAB is not a normal tap-to-install package.</li>
+                <li>For direct-download users, prefer a properly release-signed APK for the device architecture you support. Test installation and opening it on a compatible device or emulator.</li>
+                <li>Do not publish a debug-signed production build. Keep your release keystore and passwords private and backed up; never include them in the source ZIP.</li>
+                <li>Prepare a clean source project ZIP with the app source, build files, lockfiles, and README. Exclude generated build/cache folders, local properties, signing files, `.env` files, keys, and private data.</li>
+                <li>In the Android publishing form, select APK or AAB to match the actual file, upload the build and source ZIP separately, and provide platform requirements, setup steps, license, and a release changelog.</li>
+            </ol>
+            <p class="publishing-guide-callout">The current upload limit is 50 MiB per file. If the APK is too large, investigate architecture-specific release splits and unused native libraries; do not remove required app features blindly.</p>
+            <a class="button button-small" href="admin-publish.html?platform=android">Open Android publishing</a>
+        </section>
+
+        <section class="publishing-guide-section" id="wordpress-theme" aria-labelledby="theme-guide-title">
+            <div class="publishing-guide-title">
+                <span class="publishing-guide-icon" aria-hidden="true">T</span>
+                <div><p class="eyebrow">WORDPRESS</p><h2 id="theme-guide-title">Publish a WordPress theme</h2></div>
+            </div>
+            <ol class="publishing-steps">
+                <li>Package one installable theme in a ZIP with the theme folder at the archive root. Include the required `style.css` theme header and the theme's PHP, templates, scripts, styles, and owned assets.</li>
+                <li>Keep application behavior that should survive a theme change—custom post types, shortcodes, and business logic—in a companion plugin rather than the theme.</li>
+                <li>Verify the stated license and all bundled assets. Remove production credentials, customer content, and unnecessary demo data.</li>
+                <li>Install the exact ZIP on a clean WordPress site. Test activation, key templates, menus, responsive layouts, and supported WordPress/PHP versions.</li>
+                <li>Choose “WordPress theme” in the form and provide the supported WordPress version, PHP requirement, other dependencies, installation steps, and release notes.</li>
+            </ol>
+            <a class="button button-small" href="admin-publish.html?platform=wordpress">Open WordPress publishing</a>
+        </section>
+
+        <section class="publishing-guide-section" id="wordpress-plugin" aria-labelledby="plugin-guide-title">
+            <div class="publishing-guide-title">
+                <span class="publishing-guide-icon" aria-hidden="true">P</span>
+                <div><p class="eyebrow">WORDPRESS</p><h2 id="plugin-guide-title">Publish a WordPress plugin</h2></div>
+            </div>
+            <ol class="publishing-steps">
+                <li>Package one installable plugin in a ZIP with its plugin folder at the archive root and a main PHP file containing a valid WordPress plugin header.</li>
+                <li>Document what the plugin does, required plugins/services, permissions, and any data it stores or sends. Include an uninstall/data-retention note when relevant.</li>
+                <li>Check license compatibility and bundled assets. Search for credentials, private endpoints, debug data, and customer information; remove them before packaging.</li>
+                <li>Install and test the exact ZIP on a clean WordPress site with the supported PHP/WordPress versions. Test activation, core features, deactivation, and uninstall behavior.</li>
+                <li>Choose “WordPress plugin” in the publishing form and provide the exact tested compatibility, dependencies, setup instructions, license, and changelog.</li>
+            </ol>
+            <a class="button button-small" href="admin-publish.html?platform=wordpress">Open WordPress publishing</a>
+        </section>
+
+        <section class="publishing-guide-section" id="ios" aria-labelledby="ios-guide-title">
+            <div class="publishing-guide-title">
+                <span class="publishing-guide-icon" aria-hidden="true">iOS</span>
+                <div><p class="eyebrow">APPLE PLATFORMS</p><h2 id="ios-guide-title">Publish an iOS app project</h2></div>
+            </div>
+            <ol class="publishing-steps">
+                <li>Prepare a clean Xcode source ZIP containing the `.xcodeproj` or `.xcworkspace`, source files, required project assets, and setup documentation.</li>
+                <li>Exclude signing certificates, provisioning profiles, private keys, local environment files, credentials, personal data, and generated build folders.</li>
+                <li>Document the minimum iOS version, Xcode/toolchain, required services, permissions, and any configuration a developer must supply locally.</li>
+                <li>Unzip and build the project in a clean compatible Xcode environment. Test the app on a supported simulator or device and confirm the setup notes are accurate.</li>
+                <li>Upload the source ZIP and provide its version, license, requirements, setup steps, and release notes. This workflow publishes source code, not an App Store-signed binary.</li>
+            </ol>
+            <a class="button button-small" href="admin-publish.html?platform=ios">Open iOS publishing</a>
+        </section>
+
+        <section class="publishing-guide-section" id="web" aria-labelledby="web-guide-title">
+            <div class="publishing-guide-title">
+                <span class="publishing-guide-icon" aria-hidden="true">&lt;/&gt;</span>
+                <div><p class="eyebrow">WEB</p><h2 id="web-guide-title">Publish an HTML / CSS / JS project</h2></div>
+            </div>
+            <ol class="publishing-steps">
+                <li>Package the working website or web project in a ZIP with a clear root folder and a README that explains prerequisites and how to run it.</li>
+                <li>Include the necessary source and assets; exclude dependency caches, generated artifacts that can be rebuilt, secrets, `.env` files, credentials, and private data.</li>
+                <li>Replace development-only URLs and local paths where needed. Document runtime versions, external services, environment variables by name only, and any required setup.</li>
+                <li>Test the exact ZIP from a clean extraction. Check navigation, mobile layout, console/network errors, and any required API or backend configuration.</li>
+                <li>Choose “HTML / CSS / JS” in the publishing form and provide the correct license, requirements, setup instructions, and changelog.</li>
+            </ol>
+            <a class="button button-small" href="admin-publish.html?platform=web">Open web publishing</a>
+        </section>
+
+        <p class="publishing-guide-footer"><a href="admin-resources.html">Back to publishing choices</a> · <a href="admin-library.html">Open resource manager</a></p>
+    </main>
+</body>
+</html>

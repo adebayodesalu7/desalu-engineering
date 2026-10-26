@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0912">
+    <title>Publish a release | Desalu Engineering</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin-resources.css">
+    <script type="module" src="admin-resources.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav page-width" aria-label="Staff navigation">
+            <a class="brand" href="index.html" aria-label="Desalu Engineering home">
+                <span class="brand-mark" aria-hidden="true">D</span>
+                <span>DESALU<span class="brand-light"> ENGINEERING</span></span>
+            </a>
+            <div class="admin-nav-actions">
+                <a class="text-link" href="admin-resources.html">Publishing choices <span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="admin-library.html">Manage resources <span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="admin-review.html">Review queue <span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="publishing-guide.html">Publishing guide <span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="resources.html">View library <span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="admin-dashboard.html">Admin dashboard <span aria-hidden="true">↗</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="admin-main page-width resource-admin-main">
+        <section class="admin-welcome" aria-labelledby="resource-admin-title">
+            <div class="admin-heading">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> DESALU ENGINEERING / STAFF TOOLS</p>
+                    <h1 id="resource-admin-title">Publish a resource release</h1>
+                    <p id="publish-intro">Only approved packages are visible to users. Every version is stored as a separate release.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="resource-publish-panel">
+            <p class="admin-status" id="publish-access-status" role="status" aria-live="polite">Checking your staff access…</p>
+            <a class="button" id="resource-admin-signin" href="auth.html?returnTo=resourceAdmin#signin" hidden>Sign in</a>
+            <form class="resource-publish-form" id="resource-publish-form" hidden>
+                <input type="hidden" name="type">
+                <div class="resource-publish-grid">
+                    <label>
+                        Resource ID <span aria-hidden="true">*</span>
+                        <input name="resourceId" type="text" maxlength="80" pattern="[a-z0-9]+(-[a-z0-9]+)*"
+                            placeholder="my-android-app" required>
+                        <small>Use lowercase letters, numbers, and hyphens. Reuse the same ID for later versions.</small>
+                    </label>
+                    <label>
+                        Resource title <span aria-hidden="true">*</span>
+                        <input name="title" type="text" maxlength="100" required>
+                    </label>
+                    <label class="platform-field" data-platform-field="wordpress">
+                        WordPress resource type <span aria-hidden="true">*</span>
+                        <select id="wordpress-resource-type" required>
+                            <option value="wordpress-theme">WordPress theme</option>
+                            <option value="wordpress-plugin">WordPress plugin</option>
+                        </select>
+                    </label>
+                    <label>
+                        Author or publisher <span aria-hidden="true">*</span>
+                        <input name="author" type="text" maxlength="100" required>
+                    </label>
+                    <label class="resource-field-wide">
+                        Short description <span aria-hidden="true">*</span>
+                        <textarea name="summary" rows="3" minlength="20" maxlength="600" required></textarea>
+                    </label>
+                    <label>
+                        Category
+                        <input name="category" type="text" maxlength="60" placeholder="Productivity, finance, business">
+                    </label>
+                    <label>
+                        Developer or publisher display name
+                        <input name="developer" type="text" maxlength="100" placeholder="Shown on the public listing">
+                    </label>
+                    <label class="resource-field-wide">
+                        Search tags
+                        <input name="tags" type="text" maxlength="500" placeholder="calculator, finance, offline">
+                        <small>Separate up to 12 short tags with commas.</small>
+                    </label>
+                    <label>
+                        License <span aria-hidden="true">*</span>
+                        <input name="license" type="text" maxlength="100" required>
+                        <small>Use the package's actual license; do not assume ownership or redistribution rights.</small>
+                    </label>
+                    <label>
+                        Support page URL
+                        <input name="supportUrl" type="url" maxlength="300" placeholder="https://example.com/support">
+                        <small>Use a public HTTPS link. Leave blank if not available.</small>
+                    </label>
+                    <label>
+                        Privacy policy URL
+                        <input name="privacyPolicyUrl" type="url" maxlength="300" placeholder="https://example.com/privacy">
+                    </label>
+                    <label class="resource-field-wide">
+                        App or product icon image URL
+                        <input name="iconUrl" type="url" maxlength="500" placeholder="https://example.com/icon.png">
+                        <small>Use an image you have permission to publish, served over HTTPS. The image URL is public.</small>
+                    </label>
+                    <label class="resource-field-wide">
+                        Screenshot image URLs
+                        <textarea name="screenshots" rows="3" maxlength="3000" placeholder="One HTTPS image URL per line"></textarea>
+                        <small>Up to 6 public HTTPS image URLs. Do not include private or tracking links.</small>
+                    </label>
+                    <label>
+                        Version <span aria-hidden="true">*</span>
+                        <input name="version" type="text" maxlength="32" pattern="[A-Za-z0-9.+_\-]+"
+                            placeholder="1.0.0" required>
+                    </label>
+                    <label class="platform-field" data-platform-field="wordpress">
+                        Supported WordPress versions
+                        <input name="supportedWordPress" type="text" maxlength="80" placeholder="6.6 or later">
+                    </label>
+                    <label class="platform-field" data-platform-field="wordpress">
+                        PHP requirement
+                        <input name="requiresPHP" type="text" maxlength="40" placeholder="7.4 or later">
+                    </label>
+                    <label class="resource-field-wide">
+                        <span id="requirements-label">Platform and runtime requirements</span>
+                        <input name="requires" type="text" maxlength="300" placeholder="Supported platforms, runtimes, or required services">
+                    </label>
+                    <label class="resource-field-wide">
+                        Setup and installation <span aria-hidden="true">*</span>
+                        <textarea name="setup" rows="5" minlength="20" maxlength="3000" required></textarea>
+                    </label>
+                    <label class="resource-field-wide">
+                        Release notes
+                        <textarea name="changelog" rows="3" maxlength="2000"></textarea>
+                    </label>
+                    <label class="resource-field-wide platform-field" data-platform-field="zip">
+                        Project ZIP <span aria-hidden="true">*</span>
+                        <input name="package" type="file" accept=".zip,application/zip" required>
+                        <small>Maximum 50 MB. Review the archive, licenses, compatibility, and clean installation before publishing.</small>
+                    </label>
+                    <label class="platform-field" data-platform-field="android">
+                        Android build format <span aria-hidden="true">*</span>
+                        <select name="androidBuildFormat" required>
+                            <option value="apk">APK (direct installation)</option>
+                            <option value="aab">AAB (Android App Bundle)</option>
+                        </select>
+                    </label>
+                    <label class="platform-field" data-platform-field="android">
+                        Android build file <span aria-hidden="true">*</span>
+                        <input name="androidBuild" type="file"
+                            accept=".apk,.aab,application/vnd.android.package-archive,application/octet-stream" required>
+                        <small>Maximum 50 MB. Select a file matching the chosen APK or AAB format.</small>
+                    </label>
+                    <label class="resource-field-wide platform-field" data-platform-field="android">
+                        Source project ZIP <span aria-hidden="true">*</span>
+                        <input name="sourcePackage" type="file" accept=".zip,application/zip" required>
+                        <small>Maximum 50 MB. This is a separate download from the Android build.</small>
+                    </label>
+                </div>
+                <section class="resource-release-preview" aria-labelledby="release-preview-title">
+                    <p class="eyebrow">BEFORE YOU PUBLISH</p>
+                    <h2 id="release-preview-title">Release preview</h2>
+                    <strong class="resource-preview-name" id="release-preview-name">Your resource title</strong>
+                    <span class="resource-preview-version" id="release-preview-version">Resource ID · Version</span>
+                    <p id="release-preview-summary">Your short description will appear here.</p>
+                    <dl>
+                        <div><dt>Platform</dt><dd id="release-preview-platform">Selected publishing workflow</dd></div>
+                        <div><dt>Requirements</dt><dd id="release-preview-requirements">Not specified</dd></div>
+                        <div><dt>Build files</dt><dd id="release-preview-files">No files selected</dd></div>
+                    </dl>
+                    <p class="resource-preview-note">Review the preview and confirm the package ownership, licensing, safety, and test checklist below before uploading.</p>
+                    <a class="resource-preview-guide-link" id="release-publishing-guide" href="publishing-guide.html">Read instructions for this release type</a>
+                </section>
+                <label class="resource-review-attestation">
+                    <input name="reviewed" type="checkbox" required>
+                    <span id="review-attestation-copy">I verified the right to redistribute this package and its assets, checked for secrets and client data, reviewed the archive, and tested it on a clean compatible installation.</span>
+                </label>
+                <p class="resource-publish-status" id="resource-publish-status" role="status" aria-live="polite"></p>
+                <div class="resource-publish-actions">
+                    <button class="button" id="publish-resource-button" type="submit">Upload and submit for review</button>
+                    <a class="button button-outline" href="admin-resources.html">Back to publishing choices</a>
+                    <a class="button button-outline" href="resources.html">Open resource library</a>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

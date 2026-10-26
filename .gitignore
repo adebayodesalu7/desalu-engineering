@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+node_modules/
+firestore-debug.log
+cloudflare-ready-upload/
+cloudflare-ready-upload.zip
+cloudflare-mfa-ready-upload/
+cloudflare-mfa-ready-upload.zip

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0912">
+    <meta name="description" content="Browse curated WordPress products, Android and iOS apps, and web project downloads from Desalu Engineering.">
+    <title>Resource library | Desalu Engineering</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resources.css">
+    <script type="module" src="resources.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav page-width" aria-label="Main navigation">
+            <a class="brand" href="index.html" aria-label="Desalu Engineering home">
+                <span class="brand-mark" aria-hidden="true">D</span>
+                <span>DESALU<span class="brand-light"> ENGINEERING</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#planner">Plan a project</a>
+                <a href="auth.html">My workspace</a>
+                <a class="button button-small" href="auth.html?returnTo=library#signup">Create account</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="resource-main page-width">
+        <section class="resource-hero" aria-labelledby="resource-title">
+            <p class="eyebrow"><span class="eyebrow-dot"></span> THE DESALU RESOURCE LIBRARY</p>
+            <h1 id="resource-title">Useful tools, made to be used.</h1>
+            <p>Browse reviewed WordPress products, mobile apps, and web projects. Every release includes its license, requirements, setup notes, and version details.</p>
+            <div class="resource-hero-note">
+                <span aria-hidden="true">↳</span>
+                <p>Browsing is open. Sign in to bookmark resources or download an approved release.</p>
+            </div>
+        </section>
+
+        <section class="resource-catalog" aria-labelledby="catalog-title">
+            <div class="resource-catalog-heading">
+                <div>
+                    <p class="eyebrow">CURATED, VERSIONED RELEASES</p>
+                    <h2 id="catalog-title">Explore the library</h2>
+                </div>
+                <a class="text-link" href="auth.html">Open my workspace <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="resource-browse-controls" aria-label="Search and filter resources">
+                <label class="resource-search-label" for="resource-search">Search resources</label>
+                <input id="resource-search" type="search" placeholder="Search title, description, category, or tag">
+                <label for="resource-type-filter">Platform</label>
+                <select id="resource-type-filter">
+                    <option value="all">All platforms</option>
+                    <option value="android-app">Android apps</option>
+                    <option value="ios-app">iOS apps</option>
+                    <option value="wordpress-theme">WordPress themes</option>
+                    <option value="wordpress-plugin">WordPress plugins</option>
+                    <option value="html-css">Web projects</option>
+                </select>
+                <label for="resource-category-filter">Category</label>
+                <select id="resource-category-filter">
+                    <option value="all">All categories</option>
+                </select>
+                <label for="resource-sort">Sort</label>
+                <select id="resource-sort">
+                    <option value="title">Name A–Z</option>
+                    <option value="newest">Newest</option>
+                    <option value="popular">Most downloaded</option>
+                </select>
+            </div>
+            <p class="resource-status" id="resource-status" role="status" aria-live="polite">Loading approved resources…</p>
+            <div class="resource-grid" id="resource-grid"></div>
+        </section>
+    </main>
+
+    <template id="resource-card-template">
+        <article class="resource-card">
+            <img class="resource-icon" alt="" loading="lazy" hidden>
+            <div class="resource-card-top">
+                <span class="resource-type"></span>
+                <span class="resource-license"></span>
+            </div>
+            <h3 class="resource-title"><a class="resource-detail-link"></a></h3>
+            <p class="resource-summary"></p>
+            <p class="resource-developer"></p>
+            <ul class="resource-tags" aria-label="Resource tags"></ul>
+            <dl class="resource-details">
+                <div><dt>Version</dt><dd class="resource-version"></dd></div>
+                <div class="resource-wordpress-detail"><dt>WordPress</dt><dd class="resource-wordpress"></dd></div>
+                <div class="resource-wordpress-detail"><dt>PHP</dt><dd class="resource-php"></dd></div>
+                <div><dt>Package</dt><dd class="resource-size"></dd></div>
+            </dl>
+            <details class="resource-setup">
+                <summary>Requirements &amp; setup</summary>
+                <p class="resource-requirements"></p>
+                <p class="resource-setup-copy"></p>
+                <p class="resource-changelog"></p>
+                <p class="resource-checksum"></p>
+            </details>
+            <div class="resource-screenshots" aria-label="Screenshots"></div>
+            <div class="resource-external-links"></div>
+            <div class="resource-card-actions">
+                <button class="button button-outline resource-bookmark" type="button">Bookmark</button>
+                <div class="resource-downloads"></div>
+            </div>
+            <p class="resource-card-status" role="status" aria-live="polite"></p>
+        </article>
+    </template>
+</body>
+</html>

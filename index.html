@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0912">
+    <meta name="description" content="Desalu Engineering designs and builds web experiences, Android apps, and custom software for ambitious businesses.">
+    <title>Desalu Engineering | Thoughtful software, built for what’s next</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="resources.css">
+    <script src="landing.js" defer></script>
+    <script src="project-planner.js" defer></script>
+    <script type="module" src="project-planner-save.js"></script>
+    <script type="module" src="inquiry.js"></script>
+    <script type="module" src="client-chat.js"></script>
+    <script type="module" src="featured-resources.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav page-width" aria-label="Main navigation">
+            <a class="brand" href="index.html" aria-label="Desalu Engineering home">
+                <span class="brand-mark" aria-hidden="true">D</span>
+                <span>DESALU<span class="brand-light"> ENGINEERING</span></span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+                <span class="visually-hidden">Toggle navigation</span>
+                <span class="menu-icon" aria-hidden="true"></span>
+            </button>
+
+            <div class="nav-links" id="nav-links">
+                <a href="#services">Services</a>
+                <a href="#planner">Plan a project</a>
+                <a href="#work">Our work</a>
+                <a href="#packages">Packages</a>
+                <a href="#approach">Our approach</a>
+                <a href="#about">About</a>
+                <a href="resources.html">Resource library</a>
+                <a href="auth.html#signup">My workspace</a>
+                <a href="admin-dashboard.html">Admin dashboard</a>
+                <a class="button button-small" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero page-width" id="home">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="eyebrow-dot"></span> DIGITAL PRODUCTS, BUILT WITH PURPOSE</p>
+                <h1>Good ideas deserve <span class="text-gradient">great engineering.</span></h1>
+                <p class="hero-description">
+                    We design and build thoughtful software—from Android apps and websites to custom tools that make work simpler.
+                </p>
+                <div class="hero-actions">
+                    <a class="button" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a>
+                    <a class="text-link" href="#services">Explore what we do <span aria-hidden="true">↓</span></a>
+                </div>
+                <div class="hero-note">
+                    <span class="note-line" aria-hidden="true"></span>
+                    <p>Clear communication. Practical solutions. Built around your goals.</p>
+                </div>
+            </div>
+
+            <div class="hero-visual" aria-label="Illustration of a software product dashboard">
+                <div class="visual-glow"></div>
+                <div class="orbit orbit-outer"></div>
+                <div class="orbit orbit-inner"></div>
+                <div class="dashboard-card">
+                    <div class="dashboard-topbar">
+                        <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+                        <span>studio / overview</span>
+                        <span class="status-pill"><i></i> In progress</span>
+                    </div>
+                    <div class="dashboard-content">
+                        <div class="dashboard-heading">
+                            <div>
+                                <span class="mini-label">PRODUCT WORKSPACE</span>
+                                <h2>Build something<br>that matters.</h2>
+                            </div>
+                            <span class="spark-icon" aria-hidden="true">✳</span>
+                        </div>
+                        <div class="preview-window">
+                            <div class="preview-sidebar">
+                                <span class="sidebar-logo">D<span>.</span></span>
+                                <i class="sidebar-item active"></i>
+                                <i class="sidebar-item"></i>
+                                <i class="sidebar-item"></i>
+                            </div>
+                            <div class="preview-main">
+                                <div class="preview-row"><span></span><span></span></div>
+                                <div class="preview-title"></div>
+                                <div class="preview-subtitle"></div>
+                                <div class="preview-chart">
+                                    <span style="--bar-height: 28%"></span>
+                                    <span style="--bar-height: 46%"></span>
+                                    <span style="--bar-height: 38%"></span>
+                                    <span style="--bar-height: 67%"></span>
+                                    <span style="--bar-height: 54%"></span>
+                                    <span style="--bar-height: 86%"></span>
+                                    <span style="--bar-height: 72%"></span>
+                                    <span style="--bar-height: 100%"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dashboard-bottom">
+                            <span class="bottom-icon" aria-hidden="true">✦</span>
+                            <span>From first sketch to launch day</span>
+                            <span class="bottom-arrow" aria-hidden="true">↗</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-tag tag-code"><span aria-hidden="true">&lt;/&gt;</span> Made for you</div>
+                <div class="floating-tag tag-mobile"><span aria-hidden="true">◫</span> Web + Android</div>
+            </div>
+        </section>
+
+        <section class="trust-strip" aria-label="Our values">
+            <div class="page-width trust-inner">
+                <span>GOOD SOFTWARE SHOULD FEEL</span>
+                <p><i></i> Useful</p>
+                <p><i></i> Thoughtful</p>
+                <p><i></i> Built to grow</p>
+            </div>
+        </section>
+
+        <section class="resource-featured-section page-width" id="featured-resources" aria-labelledby="featured-resources-title" hidden>
+            <div class="resource-featured-heading">
+                <div>
+                    <p class="eyebrow">SELECTED FOR YOU</p>
+                    <h2 id="featured-resources-title">Featured resources</h2>
+                    <p>Reviewed apps and tools from the Desalu resource library.</p>
+                </div>
+                <a class="text-link" href="resources.html">Explore the full library <span aria-hidden="true">↗</span></a>
+            </div>
+            <p class="resource-featured-status" id="featured-resources-status" role="status" aria-live="polite"></p>
+            <div class="resource-featured-grid" id="featured-resources-grid"></div>
+        </section>
+
+        <section class="services-section section-space" id="services">
+            <div class="page-width">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">WHAT WE CAN BUILD TOGETHER</p>
+                        <h2>From the first idea<br>to the finished product.</h2>
+                    </div>
+                    <p class="section-intro">We bring design and engineering together to solve real problems for people and businesses.</p>
+                </div>
+
+                <div class="service-grid">
+                    <article class="service-card service-card-featured">
+                        <span class="service-number">01 / MOBILE</span>
+                        <span class="service-icon icon-mobile" aria-hidden="true">▯</span>
+                        <h3>Android app design &amp; development</h3>
+                        <p>Plan and create useful Android experiences, from early product flows and interface design to a working app.</p>
+                        <a href="#contact" aria-label="Ask us about Android app design and development">Explore this service <span aria-hidden="true">↗</span></a>
+                    </article>
+
+                    <article class="service-card">
+                        <span class="service-number">02 / WEB</span>
+                        <span class="service-icon icon-web" aria-hidden="true">⌘</span>
+                        <h3>Websites &amp; web applications</h3>
+                        <p>Responsive websites and web apps that look polished, load quickly, and make the next step easy.</p>
+                        <a href="#contact" aria-label="Ask us about websites and web applications">Explore this service <span aria-hidden="true">↗</span></a>
+                    </article>
+
+                    <article class="service-card">
+                        <span class="service-number">03 / SOFTWARE</span>
+                        <span class="service-icon icon-software" aria-hidden="true">✳</span>
+                        <h3>Custom software &amp; programming</h3>
+                        <p>Purpose-built tools, features, and software to fit your workflow instead of forcing you into someone else’s.</p>
+                        <a href="#contact" aria-label="Ask us about custom software">Explore this service <span aria-hidden="true">↗</span></a>
+                    </article>
+
+                    <article class="service-card">
+                        <span class="service-number">04 / PRODUCT DESIGN</span>
+                        <span class="service-icon icon-design" aria-hidden="true">◈</span>
+                        <h3>UI/UX design &amp; prototypes</h3>
+                        <p>Clear user journeys, thoughtful interfaces, and interactive prototypes to test an idea before building it.</p>
+                        <a href="#contact" aria-label="Ask us about UI and UX design">Explore this service <span aria-hidden="true">↗</span></a>
+                    </article>
+
+                    <article class="service-card">
+                        <span class="service-number">05 / CONNECT</span>
+                        <span class="service-icon icon-connect" aria-hidden="true">⟷</span>
+                        <h3>APIs &amp; integrations</h3>
+                        <p>Connect your tools, services, and data so information moves where it needs to go.</p>
+                        <a href="#contact" aria-label="Ask us about APIs and integrations">Explore this service <span aria-hidden="true">↗</span></a>
+                    </article>
+
+                    <article class="service-card">
+                        <span class="service-number">06 / IMPROVE</span>
+                        <span class="service-icon icon-automation" aria-hidden="true">↻</span>
+                        <h3>Automation &amp; ongoing support</h3>
+                        <p>Reduce repetitive work, improve existing software, and get practical engineering help as you grow.</p>
+                        <a href="#contact" aria-label="Ask us about automation and ongoing support">Explore this service <span aria-hidden="true">↗</span></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="planner-section section-space" id="planner">
+            <div class="page-width">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">START WITH YOUR IDEA</p>
+                        <h2>Turn “what if?”<br>into a project brief.</h2>
+                    </div>
+                    <p class="section-intro">Answer a few practical questions and leave with a useful first draft. No account, no AI prompt, and nothing is sent until you choose to use it in an inquiry.</p>
+                </div>
+
+                <div class="planner-layout">
+                    <div class="planner-main">
+                        <ol class="planner-progress" aria-label="Project planner steps">
+                            <li class="is-current" data-planner-progress="1"><span>01</span> Your idea</li>
+                            <li data-planner-progress="2"><span>02</span> Scope</li>
+                            <li data-planner-progress="3"><span>03</span> Your brief</li>
+                        </ol>
+                        <form class="planner-form" id="project-planner">
+                            <section class="planner-step" data-planner-step="1" aria-labelledby="planner-step-one">
+                                <p class="planner-step-count">STEP 1 OF 3</p>
+                                <h3 id="planner-step-one" tabindex="-1">What are you hoping to make?</h3>
+                                <p class="planner-helper">Start with the problem or opportunity. You can refine the details as you go.</p>
+                                <label class="planner-field">
+                                    <span>What kind of help are you looking for?</span>
+                                    <select name="service" required>
+                                        <option value="">Choose the closest fit</option>
+                                        <option value="Website or web application">A website or web application</option>
+                                        <option value="Android app design and development">An Android app</option>
+                                        <option value="Custom software and programming">A custom internal tool or software</option>
+                                        <option value="UI/UX design and prototype">Product design or a prototype</option>
+                                        <option value="APIs and integrations">An API or integration between tools</option>
+                                        <option value="Automation and ongoing support">Automation or support for existing software</option>
+                                        <option value="Other">I’m not sure yet</option>
+                                    </select>
+                                </label>
+                                <label class="planner-field">
+                                    <span>What problem should it solve?</span>
+                                    <textarea name="goal" rows="4" minlength="20" maxlength="600" required
+                                        placeholder="For example: customers currently call us to book, and we want them to schedule online."></textarea>
+                                    <small>Describe the need, not confidential data. At least 20 characters.</small>
+                                </label>
+                                <label class="planner-field">
+                                    <span>Who will use it? <em>Optional</em></span>
+                                    <input name="audience" type="text" maxlength="160"
+                                        placeholder="For example: our customers, field staff, or a small operations team">
+                                </label>
+                                <div class="planner-actions">
+                                    <span></span>
+                                    <button class="button planner-next" type="button">Choose scope <span aria-hidden="true">→</span></button>
+                                </div>
+                            </section>
+
+                            <section class="planner-step" data-planner-step="2" aria-labelledby="planner-step-two" hidden>
+                                <p class="planner-step-count">STEP 2 OF 3</p>
+                                <h3 id="planner-step-two" tabindex="-1">What might the first version need?</h3>
+                                <p class="planner-helper">Pick any useful capabilities. This helps frame the conversation; it isn’t a commitment or fixed estimate.</p>
+                                <fieldset class="planner-options">
+                                    <legend>Possible capabilities <em>Choose any that sound useful</em></legend>
+                                    <label><input type="checkbox" name="features" value="Account sign-in and role-based access"><span>Account sign-in and different user roles</span></label>
+                                    <label><input type="checkbox" name="features" value="Booking, forms, or customer requests"><span>Booking, forms, or customer requests</span></label>
+                                    <label><input type="checkbox" name="features" value="Payments, subscriptions, or invoicing"><span>Payments, subscriptions, or invoicing</span></label>
+                                    <label><input type="checkbox" name="features" value="Admin dashboard and reporting"><span>Admin dashboard and reporting</span></label>
+                                    <label><input type="checkbox" name="features" value="AI-assisted search, support, or content"><span>AI-assisted search, support, or content</span></label>
+                                    <label><input type="checkbox" name="features" value="Integration with existing tools or data"><span>Connection to tools or data you already use</span></label>
+                                    <label><input type="checkbox" name="features" value="Notifications and automated workflows"><span>Notifications and automated workflows</span></label>
+                                    <label><input type="checkbox" name="features" value="Not sure yet"><span>I’m not sure yet—help me decide</span></label>
+                                </fieldset>
+                                <div class="planner-fields-row">
+                                    <label class="planner-field">
+                                        <span>Do you have an existing product or system?</span>
+                                        <select name="existing">
+                                            <option value="Starting from scratch">Starting from scratch</option>
+                                            <option value="Improving or replacing an existing system">Yes, I want to improve or replace one</option>
+                                            <option value="Connecting to an existing system">Yes, this needs to connect to one</option>
+                                            <option value="Not sure yet">Not sure yet</option>
+                                        </select>
+                                    </label>
+                                    <label class="planner-field">
+                                        <span>When would you ideally like to start?</span>
+                                        <select name="timeline">
+                                            <option value="">Not sure yet</option>
+                                            <option value="As soon as possible">As soon as possible</option>
+                                            <option value="Within 1 to 3 months">Within 1 to 3 months</option>
+                                            <option value="Within 3 to 6 months">Within 3 to 6 months</option>
+                                            <option value="More than 6 months">More than 6 months</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <label class="planner-field">
+                                    <span>Budget or constraints to plan around <em>Optional</em></span>
+                                    <input name="budget" type="text" maxlength="120"
+                                        placeholder="Optional—include currency if you have a target range">
+                                    <small>Use a broad range only. We won’t calculate a price from this.</small>
+                                </label>
+                                <div class="planner-actions">
+                                    <button class="button button-outline planner-back" type="button">← Back</button>
+                                    <button class="button planner-next" type="button">Create my brief <span aria-hidden="true">→</span></button>
+                                </div>
+                            </section>
+
+                            <section class="planner-step" data-planner-step="3" aria-labelledby="planner-step-three" hidden>
+                                <p class="planner-step-count">STEP 3 OF 3</p>
+                                <h3 id="planner-step-three" tabindex="-1">Your project brief</h3>
+                                <p class="planner-helper">Here’s a starting point to review and edit. It’s a conversation brief, not a technical specification, quote, or delivery promise.</p>
+                                <div class="planner-recommendation" id="planner-recommendation"></div>
+                                <label class="planner-field">
+                                    <span>Edit your brief before you use it</span>
+                                    <textarea id="planner-result" name="brief" rows="12" maxlength="2800"></textarea>
+                                </label>
+                                <div class="planner-actions planner-result-actions">
+                                    <button class="button button-outline planner-back" type="button">← Edit scope</button>
+                                    <div>
+                                        <button class="button button-outline" id="planner-copy" type="button">Copy brief</button>
+                                        <button class="button button-outline" id="planner-save" type="button">Save to my workspace</button>
+                                        <button class="button" id="planner-inquiry" type="button">Use in inquiry <span aria-hidden="true">↗</span></button>
+                                    </div>
+                                </div>
+                                <p class="planner-status" id="planner-status" role="status" aria-live="polite"></p>
+                            </section>
+                        </form>
+                    </div>
+                    <aside class="planner-aside">
+                        <span class="planner-aside-icon" aria-hidden="true">✳</span>
+                        <h3>A useful first step—not a sales trap.</h3>
+                        <ul>
+                            <li>Build a draft without signing up.</li>
+                            <li>Your answers stay in this browser until you choose to copy or submit them.</li>
+                            <li>There’s no auto-generated price or unsupported timeline.</li>
+                            <li>Send the brief only if you want the team to follow up.</li>
+                        </ul>
+                        <a href="#packages">Explore service packages <span aria-hidden="true">↗</span></a>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-section section-space" id="work">
+            <div class="page-width">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">SELECTED WORK</p>
+                        <h2>Built in-house.<br>Made to solve a real need.</h2>
+                    </div>
+                    <p class="section-intro">A work-in-progress showcase of our own studio website and inquiry experience—not a client case study or a claim of client results.</p>
+                </div>
+
+                <article class="portfolio-card">
+                    <div class="portfolio-preview" aria-label="Illustration of the Desalu Engineering website and inquiry dashboard">
+                        <div class="portfolio-browser">
+                            <div class="portfolio-browser-bar">
+                                <span></span><span></span><span></span>
+                                <p>desalu engineering / studio</p>
+                            </div>
+                            <div class="portfolio-screen">
+                                <div class="portfolio-screen-nav"><b>D.</b><span></span><span></span><span></span></div>
+                                <div class="portfolio-screen-content">
+                                    <span class="portfolio-screen-kicker">DIGITAL PRODUCTS, BUILT WITH PURPOSE</span>
+                                    <strong>Good ideas deserve<br>great engineering.</strong>
+                                    <span class="portfolio-screen-button">Start a conversation ↗</span>
+                                </div>
+                                <div class="portfolio-chat-preview">
+                                    <span>✦</span>
+                                    <div><b>Project inquiry</b><small>AI-assisted service questions</small></div>
+                                    <i aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-details">
+                        <div class="portfolio-labels">
+                            <span>IN-HOUSE DEMO</span>
+                            <span>WEB · FIREBASE · AI CHAT</span>
+                        </div>
+                        <h3>Desalu Engineering inquiry experience</h3>
+                        <p class="portfolio-problem"><strong>The need</strong> Present our services clearly and give visitors a direct way to ask questions or request a project follow-up.</p>
+                        <p class="portfolio-delivery"><strong>What we built</strong> A responsive service website, Supabase-backed inquiry form, staff lead dashboard, and opt-in AI chat handoff.</p>
+                        <div class="portfolio-build">
+                            <div>
+                                <h4>Product decisions</h4>
+                                <ul>
+                                    <li>Visitors can send inquiries without creating an account.</li>
+                                    <li>Supabase row-level security restricts inquiry access to staff.</li>
+                                    <li>Chat conversations reach staff only after an explicit handoff request.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4>Built with</h4>
+                                <p>Responsive HTML and CSS, JavaScript modules, Supabase Auth, Postgres Row Level Security, private Storage, and a protected Gemini Edge Function.</p>
+                            </div>
+                        </div>
+                        <div class="portfolio-status"><span aria-hidden="true"></span> Working prototype · production setup and deployment still pending</div>
+                        <p class="portfolio-outcome">This is our own demonstration project, not paid client work. We have not measured live conversion or business results.</p>
+                        <a class="text-link" href="#contact">Discuss a similar project <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+                <div class="portfolio-next-step">
+                    <span>YOUR PROJECT, YOUR CONSTRAINTS</span>
+                    <p>We can use this same process to explore a website, Android app, internal tool, or product idea—starting with your goals, not a preselected technology.</p>
+                    <a class="text-link" href="#contact">Tell us what you need <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="approach-section section-space" id="approach">
+            <div class="page-width approach-layout">
+                <div class="approach-copy">
+                    <p class="eyebrow">A COLLABORATIVE PROCESS</p>
+                    <h2>Thoughtful work.<br><span class="text-gradient">No mystery.</span></h2>
+                    <p>Good outcomes start with understanding the problem. We keep the work visible, the conversations open, and the solution focused on what you actually need.</p>
+                    <a class="text-link" href="#contact">Tell us about your idea <span aria-hidden="true">↗</span></a>
+                </div>
+                <ol class="process-list">
+                    <li>
+                        <span class="process-step">01</span>
+                        <div><h3>Listen &amp; understand</h3><p>We learn about your goals, your users, and what success should look like.</p></div>
+                    </li>
+                    <li>
+                        <span class="process-step">02</span>
+                        <div><h3>Shape the solution</h3><p>We map out a practical scope, approach, and clear next steps together.</p></div>
+                    </li>
+                    <li>
+                        <span class="process-step">03</span>
+                        <div><h3>Design &amp; build</h3><p>We create, test, and share progress so you can stay involved as the product takes shape.</p></div>
+                    </li>
+                    <li>
+                        <span class="process-step">04</span>
+                        <div><h3>Launch &amp; improve</h3><p>We help you move forward with a solid handoff and support for what comes next.</p></div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="packages-section section-space" id="packages">
+            <div class="page-width">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">CLEAR STARTING POINTS</p>
+                        <h2>Choose the kind<br>of help you need.</h2>
+                    </div>
+                    <p class="section-intro">Every project is scoped with you before work begins. We provide a written proposal with deliverables, assumptions, timing, and a fixed quote for the agreed scope.</p>
+                </div>
+
+                <div class="package-grid">
+                    <article class="package-card">
+                        <span class="package-number">01 / PLAN</span>
+                        <h3>Product discovery</h3>
+                        <p class="package-summary">Turn an early idea into a practical plan for what to build next.</p>
+                        <p class="package-price">Custom quote <span>after an initial conversation</span></p>
+                        <p class="package-fit"><strong>A good fit if</strong> You have a problem or idea but need help deciding what to build first.</p>
+                        <h4>Possible deliverables</h4>
+                        <ul>
+                            <li>Goals, user needs, and problem statement</li>
+                            <li>Prioritized first-release feature list</li>
+                            <li>Core user journeys and rough wireframes</li>
+                            <li>Recommended technical direction and risks</li>
+                            <li>Written scope for the next phase</li>
+                        </ul>
+                        <p class="package-note"><strong>Not included by default:</strong> Production implementation, user research recruitment, or a complete visual design system.</p>
+                        <a class="button button-outline" href="#contact">Plan my project <span aria-hidden="true">↗</span></a>
+                    </article>
+
+                    <article class="package-card package-card-featured">
+                        <span class="package-number">02 / DESIGN</span>
+                        <h3>Design &amp; prototype</h3>
+                        <p class="package-summary">Make the experience concrete and testable before committing to a build.</p>
+                        <p class="package-price">Custom quote <span>based on screens and flows</span></p>
+                        <p class="package-fit"><strong>A good fit if</strong> You need to communicate, validate, or refine the product experience before development.</p>
+                        <h4>Possible deliverables</h4>
+                        <ul>
+                            <li>Information architecture and key user flows</li>
+                            <li>Wireframes for agreed screens</li>
+                            <li>Responsive visual design direction</li>
+                            <li>Clickable prototype for review</li>
+                            <li>Developer handoff notes and assets</li>
+                        </ul>
+                        <p class="package-note"><strong>Not included by default:</strong> Production code, formal usability testing, or additional revision rounds beyond the proposal.</p>
+                        <a class="button" href="#contact">Shape my product <span aria-hidden="true">↗</span></a>
+                    </article>
+
+                    <article class="package-card">
+                        <span class="package-number">03 / BUILD</span>
+                        <h3>Website or app MVP</h3>
+                        <p class="package-summary">Build a focused first release around a defined user problem and agreed feature set.</p>
+                        <p class="package-price">Custom quote <span>after scope and requirements review</span></p>
+                        <p class="package-fit"><strong>A good fit if</strong> You are ready to turn an approved plan or design into a usable first release.</p>
+                        <h4>Possible deliverables</h4>
+                        <ul>
+                            <li>Agreed website, Android app, or web app features</li>
+                            <li>Development environment and source code</li>
+                            <li>Review builds and agreed testing</li>
+                            <li>Launch checklist and deployment support</li>
+                            <li>Documentation and project handoff</li>
+                        </ul>
+                        <p class="package-note"><strong>Not included by default:</strong> Hosting, paid third-party services, app-store fees, content creation, or features outside the agreed scope.</p>
+                        <a class="button button-outline" href="#contact">Scope my MVP <span aria-hidden="true">↗</span></a>
+                    </article>
+
+                    <article class="package-card">
+                        <span class="package-number">04 / SUPPORT</span>
+                        <h3>Ongoing care</h3>
+                        <p class="package-summary">Keep an existing website or application healthy and improve it in planned increments.</p>
+                        <p class="package-price">Monthly plan <span>scope and fee agreed before start</span></p>
+                        <p class="package-fit"><strong>A good fit if</strong> You need a steady technical partner after launch or for software you already own.</p>
+                        <h4>Possible deliverables</h4>
+                        <ul>
+                            <li>Maintenance and dependency review</li>
+                            <li>Bug triage and agreed fixes</li>
+                            <li>Small, prioritized improvements</li>
+                            <li>Regular status and work summaries</li>
+                            <li>Clear monthly capacity and response terms</li>
+                        </ul>
+                        <p class="package-note"><strong>Before starting:</strong> We review the existing system and agree access, responsibilities, service limits, and cancellation terms.</p>
+                        <a class="button button-outline" href="#contact">Discuss ongoing support <span aria-hidden="true">↗</span></a>
+                    </article>
+                </div>
+                <div class="package-terms">
+                    <div>
+                        <p class="eyebrow">NO SURPRISES</p>
+                        <h3>Know what you’re agreeing to.</h3>
+                    </div>
+                    <p>Before work begins, the proposal should spell out deliverables, assumptions, review points, timeline, payment schedule, ownership and handoff, third-party costs, and how changes are handled. Work outside the agreed scope is discussed before it’s added.</p>
+                    <p class="package-disclaimer">Prices are custom because effort depends on features, integrations, content, and existing systems. No fee, timeline, or outcome is promised until confirmed in a written proposal.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section section-space" id="contact">
+            <div class="page-width contact-layout">
+                <div class="contact-copy">
+                    <p class="eyebrow">TELL US WHAT YOU’RE THINKING</p>
+                    <h2>Have a project<br><span class="text-gradient">in mind?</span></h2>
+                    <p>Share a little about what you want to build. We’ll review your note and follow up using the email you provide.</p>
+                    <p class="contact-privacy"><span aria-hidden="true">◇</span> Your details are used to respond to your inquiry. Don’t include passwords or sensitive personal information.</p>
+                </div>
+
+                <form class="inquiry-form" id="project-inquiry" novalidate>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="inquiry-name">Your name <span aria-hidden="true">*</span></label>
+                            <input id="inquiry-name" name="name" type="text" autocomplete="name" minlength="2" maxlength="80" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="inquiry-email">Email address <span aria-hidden="true">*</span></label>
+                            <input id="inquiry-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="inquiry-company">Company <span class="optional-label">(optional)</span></label>
+                        <input id="inquiry-company" name="company" type="text" autocomplete="organization" maxlength="120">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="inquiry-service">What do you need? <span aria-hidden="true">*</span></label>
+                            <select id="inquiry-service" name="service" required>
+                                <option value="">Choose a service</option>
+                                <option value="Android app design and development">Android app design &amp; development</option>
+                                <option value="Website or web application">Website or web application</option>
+                                <option value="Custom software and programming">Custom software &amp; programming</option>
+                                <option value="UI/UX design and prototype">UI/UX design &amp; prototype</option>
+                                <option value="APIs and integrations">APIs &amp; integrations</option>
+                                <option value="Automation and ongoing support">Automation &amp; ongoing support</option>
+                                <option value="Other">Something else</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="inquiry-timeline">Ideal timing <span class="optional-label">(optional)</span></label>
+                            <select id="inquiry-timeline" name="timeline">
+                                <option value="">Not sure yet</option>
+                                <option value="As soon as possible">As soon as possible</option>
+                                <option value="Within 1 to 3 months">Within 1–3 months</option>
+                                <option value="Within 3 to 6 months">Within 3–6 months</option>
+                                <option value="More than 6 months">More than 6 months</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="inquiry-message">Tell us a little about your project <span aria-hidden="true">*</span></label>
+                        <textarea id="inquiry-message" name="message" rows="5" minlength="20" maxlength="3000" required placeholder="What are you hoping to build or improve?"></textarea>
+                    </div>
+                    <div class="website-field" aria-hidden="true">
+                        <label for="inquiry-website">Leave this field empty</label>
+                        <input id="inquiry-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button class="button inquiry-submit" type="submit">
+                        <span>Send project inquiry</span><span aria-hidden="true">↗</span>
+                    </button>
+                    <p class="inquiry-status" id="inquiry-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="about-section section-space" id="about">
+            <div class="page-width about-card">
+                <div class="about-mark" aria-hidden="true">D<span>.</span></div>
+                <div>
+                    <p class="eyebrow">DESALU ENGINEERING</p>
+                    <h2>Engineering that starts with people.</h2>
+                    <p>We’re a software and digital product studio focused on making technology useful, approachable, and built around the people who rely on it.</p>
+                </div>
+                <a class="button button-outline" href="#contact">Work with us <span aria-hidden="true">↗</span></a>
+            </div>
+        </section>
+    </main>
+
+    <aside class="chat-widget" aria-label="Desalu Engineering AI assistant">
+        <section class="chat-panel" id="chat-panel" aria-labelledby="chat-title" hidden>
+            <header class="chat-header">
+                <div>
+                    <p class="chat-eyebrow">DESALU ENGINEERING</p>
+                    <h2 id="chat-title">Ask about a project</h2>
+                </div>
+                <button class="chat-close" id="chat-close" type="button" aria-label="Close chat">×</button>
+            </header>
+            <div class="chat-disclosure">
+                AI-assisted by Google Gemini. On the no-cost tier, Google may use prompts and responses to improve its products.
+                Don’t share personal, contact, or confidential project details here. For a quote or human follow-up, choose “Ask our team.”
+            </div>
+            <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions">
+                <p class="chat-message chat-message-assistant">Hi! I can answer general questions about our services and how we work. What are you thinking about building?</p>
+            </div>
+            <p class="chat-status" id="chat-status" role="status" aria-live="polite"></p>
+            <form class="chat-compose" id="chat-form">
+                <label class="visually-hidden" for="chat-input">Your question</label>
+                <input id="chat-input" name="message" type="text" maxlength="600" autocomplete="off"
+                    placeholder="Ask a general question…" required>
+                <button class="chat-send" type="submit" aria-label="Send question">Send</button>
+            </form>
+            <div id="chat-turnstile" aria-label="Anti-abuse verification"></div>
+            <button class="chat-handoff-toggle" id="chat-handoff-toggle" type="button">Ask our team about your project</button>
+            <form class="chat-handoff" id="chat-handoff" hidden>
+                <p class="chat-handoff-intro">Share your contact details and we’ll send this conversation to our team.</p>
+                <label>
+                    Your name
+                    <input name="name" type="text" minlength="2" maxlength="80" autocomplete="name" required>
+                </label>
+                <label>
+                    Email address
+                    <input name="email" type="email" maxlength="254" autocomplete="email" required>
+                </label>
+                <label>
+                    Service
+                    <select name="service" required>
+                        <option value="">Choose a service</option>
+                        <option value="Android app design and development">Android app design &amp; development</option>
+                        <option value="Website or web application">Website or web application</option>
+                        <option value="Custom software and programming">Custom software &amp; programming</option>
+                        <option value="UI/UX design and prototype">UI/UX design &amp; prototype</option>
+                        <option value="APIs and integrations">APIs &amp; integrations</option>
+                        <option value="Automation and ongoing support">Automation &amp; ongoing support</option>
+                        <option value="Other">Something else</option>
+                    </select>
+                </label>
+                <label>
+                    Project details or question
+                    <textarea name="projectDetails" rows="3" maxlength="1000"
+                        placeholder="Add any context the team should know"></textarea>
+                </label>
+                <label class="chat-consent">
+                    <input name="consent" type="checkbox" required>
+                    <span>I agree to share this chat and my contact details with Desalu Engineering so the team can follow up.</span>
+                </label>
+                <button class="button button-small chat-handoff-submit" type="submit">Send to our team</button>
+                <p class="chat-handoff-status" id="chat-handoff-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+        <button class="chat-launcher" id="chat-launcher" type="button" aria-expanded="false" aria-controls="chat-panel">
+            <span aria-hidden="true">✦</span> Chat with us
+        </button>
+    </aside>
+
+    <footer class="site-footer">
+        <div class="page-width footer-inner">
+            <a class="brand" href="index.html" aria-label="Desalu Engineering home">
+                <span class="brand-mark" aria-hidden="true">D</span>
+                <span>DESALU<span class="brand-light"> ENGINEERING</span></span>
+            </a>
+            <p>Thoughtful software, built for what’s next.</p>
+            <div class="footer-links">
+                <a href="#services">Services</a>
+                <a href="#planner">Plan a project</a>
+                <a href="#work">Our work</a>
+                <a href="#packages">Packages</a>
+            </div>
+            <span class="copyright">© <span id="current-year">2026</span> Desalu Engineering</span>
+        </div>
+    </footer>
+</body>
+</html>

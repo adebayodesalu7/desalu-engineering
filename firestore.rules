@@ -1,0 +1,455 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isStaff() {
+      return request.auth != null && request.auth.token.staff == true;
+    }
+
+    function validNewInquiry() {
+      let data = request.resource.data;
+      return data.keys().hasAll([
+          'name',
+          'email',
+          'company',
+          'service',
+          'timeline',
+          'message',
+          'status',
+          'createdAt'
+        ])
+        && data.keys().hasOnly([
+          'name',
+          'email',
+          'company',
+          'service',
+          'timeline',
+          'message',
+          'status',
+          'createdAt'
+        ])
+        && data.name is string
+        && data.name.size() >= 2
+        && data.name.size() <= 80
+        && data.email is string
+        && data.email.size() <= 254
+        && data.email.matches('^[^@ ]+@[^@ ]+\\.[^@ ]+$')
+        && data.company is string
+        && data.company.size() <= 120
+        && data['service'] is string
+        && data['service'] in [
+          'Android app design and development',
+          'Website or web application',
+          'Custom software and programming',
+          'UI/UX design and prototype',
+          'APIs and integrations',
+          'Automation and ongoing support',
+          'Other'
+        ]
+        && data.timeline is string
+        && data.timeline in [
+          '',
+          'As soon as possible',
+          'Within 1 to 3 months',
+          'Within 3 to 6 months',
+          'More than 6 months'
+        ]
+        && data.message is string
+        && data.message.size() >= 20
+        && data.message.size() <= 3000
+        && data.status == 'new'
+        && data.createdAt == request.time;
+    }
+
+    match /inquiries/{inquiryId} {
+      allow create: if validNewInquiry();
+      allow get, list: if isStaff();
+      allow update: if isStaff()
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['status', 'staffNotes', 'updatedAt'])
+        && request.resource.data.keys().hasAll([
+          'name',
+          'email',
+          'company',
+          'service',
+          'timeline',
+          'message',
+          'status',
+          'createdAt',
+          'staffNotes',
+          'updatedAt'
+        ])
+        && request.resource.data.status is string
+        && request.resource.data.status in [
+          'new',
+          'reviewing',
+          'contacted',
+          'in progress',
+          'closed'
+        ]
+        && request.resource.data.staffNotes is string
+        && request.resource.data.staffNotes.size() <= 2000
+        && request.resource.data.updatedAt == request.time;
+      allow delete: if false;
+    }
+
+    function validSavedBrief(data) {
+      return data.keys().hasAll([
+          'title',
+          'service',
+          'content',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'title',
+          'service',
+          'content',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.title is string
+        && data.title.size() >= 3
+        && data.title.size() <= 80
+        && data['service'] is string
+        && data['service'] in [
+          'Android app design and development',
+          'Website or web application',
+          'Custom software and programming',
+          'UI/UX design and prototype',
+          'APIs and integrations',
+          'Automation and ongoing support',
+          'Other'
+        ]
+        && data.content is string
+        && data.content.size() >= 20
+        && data.content.size() <= 3000
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    match /users/{userId}/savedBriefs/{briefId} {
+      allow get, list: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null
+        && request.auth.uid == userId
+        && validSavedBrief(request.resource.data)
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+      allow update: if request.auth != null
+        && request.auth.uid == userId
+        && validSavedBrief(request.resource.data)
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['title', 'service', 'content', 'updatedAt']);
+      allow delete: if request.auth != null && request.auth.uid == userId;
+    }
+
+    function publishedResource(resourceId) {
+      let resourcePath = /databases/$(database)/documents/resources/$(resourceId);
+      return exists(resourcePath) && get(resourcePath).data.status == 'published';
+    }
+
+    function publishedRelease(resourceId, releaseId) {
+      let resourcePath = /databases/$(database)/documents/resources/$(resourceId);
+      let releasePath = /databases/$(database)/documents/resources/$(resourceId)/releases/$(releaseId);
+      return exists(resourcePath)
+        && get(resourcePath).data.status == 'published'
+        && exists(releasePath)
+        && get(releasePath).data.status == 'published';
+    }
+
+    function validResource(data) {
+      return data.keys().hasAll([
+          'title',
+          'summary',
+          'type',
+          'author',
+          'license',
+          'status',
+          'latestReleaseId',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.keys().hasOnly([
+          'title',
+          'summary',
+          'type',
+          'author',
+          'license',
+          'status',
+          'latestReleaseId',
+          'createdAt',
+          'updatedAt'
+        ])
+        && data.title is string
+        && data.title.size() >= 3
+        && data.title.size() <= 100
+        && data.summary is string
+        && data.summary.size() >= 20
+        && data.summary.size() <= 600
+        && data.type is string
+        && data.type in [
+          'wordpress-theme',
+          'wordpress-plugin',
+          'html-css',
+          'android-app',
+          'ios-app'
+        ]
+        && data.author is string
+        && data.author.size() >= 2
+        && data.author.size() <= 100
+        && data.license is string
+        && data.license.size() >= 2
+        && data.license.size() <= 100
+        && data.status in ['draft', 'published', 'retired']
+        && data.latestReleaseId is string
+        && data.latestReleaseId.size() <= 100
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function validResourceRelease(data, resourceType, resourceId, releaseId) {
+      let releasePath = 'resources/' + resourceId + '/releases/' + releaseId;
+      return data.keys().hasAll([
+          'version',
+          'supportedWordPress',
+          'requiresPHP',
+          'requires',
+          'setup',
+          'changelog',
+          'storagePath',
+          'fileName',
+          'fileSize',
+          'sha256',
+          'buildFormat',
+          'sourceStoragePath',
+          'sourceFileName',
+          'sourceFileSize',
+          'sourceSha256',
+          'status',
+          'createdAt',
+          'publishedAt'
+        ])
+        && data.keys().hasOnly([
+          'version',
+          'supportedWordPress',
+          'requiresPHP',
+          'requires',
+          'setup',
+          'changelog',
+          'storagePath',
+          'fileName',
+          'fileSize',
+          'sha256',
+          'buildFormat',
+          'sourceStoragePath',
+          'sourceFileName',
+          'sourceFileSize',
+          'sourceSha256',
+          'status',
+          'createdAt',
+          'publishedAt'
+        ])
+        && data.version is string
+        && data.version.size() >= 1
+        && data.version.size() <= 32
+        && data.supportedWordPress is string
+        && data.supportedWordPress.size() <= 80
+        && data.requiresPHP is string
+        && data.requiresPHP.size() <= 40
+        && data.requires is string
+        && data.requires.size() <= 300
+        && data.setup is string
+        && data.setup.size() >= 20
+        && data.setup.size() <= 3000
+        && data.changelog is string
+        && data.changelog.size() <= 2000
+        && data.storagePath is string
+        && data.storagePath.size() <= 300
+        && data.fileName is string
+        && data.fileName.size() >= 1
+        && data.fileName.size() <= 120
+        && data.fileSize is int
+        && data.fileSize > 0
+        && data.fileSize <= 52428800
+        && data.sha256 is string
+        && data.sha256.matches('^[a-f0-9]{64}$')
+        && data.buildFormat is string
+        && data.sourceStoragePath is string
+        && data.sourceStoragePath.size() <= 300
+        && data.sourceFileName is string
+        && data.sourceFileName.size() <= 120
+        && data.sourceFileSize is int
+        && data.sourceSha256 is string
+        && (
+          (resourceType == 'android-app'
+            && data.buildFormat in ['apk', 'aab']
+            && data.storagePath == releasePath + '/build.' + data.buildFormat
+            && data.sourceStoragePath == releasePath + '/source.zip'
+            && data.sourceFileName.size() >= 1
+            && data.sourceFileSize > 0
+            && data.sourceFileSize <= 52428800
+            && data.sourceSha256.matches('^[a-f0-9]{64}$'))
+          || (resourceType != 'android-app'
+            && data.buildFormat == ''
+            && data.storagePath == releasePath + '/artifact.zip'
+            && data.sourceStoragePath == ''
+            && data.sourceFileName == ''
+            && data.sourceFileSize == 0
+            && data.sourceSha256 == '')
+        )
+        && data.status in ['draft', 'published', 'retired']
+        && data.createdAt is timestamp
+        && (data.publishedAt == null || data.publishedAt is timestamp);
+    }
+
+    match /resources/{resourceId} {
+      allow get, list: if isStaff() || resource.data.status == 'published';
+      allow create: if isStaff()
+        && validResource(request.resource.data)
+        && request.resource.data.status == 'draft'
+        && request.resource.data.latestReleaseId == ''
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time;
+      allow update: if isStaff()
+        && validResource(request.resource.data)
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly([
+            'title',
+            'summary',
+            'type',
+            'author',
+            'license',
+            'status',
+            'latestReleaseId',
+            'updatedAt'
+          ]);
+      allow delete: if isStaff()
+        && resource.data.status == 'draft'
+        && resource.data.latestReleaseId == '';
+
+      match /releases/{releaseId} {
+        allow get, list: if isStaff()
+          || (resource.data.status == 'published'
+            && get(/databases/$(database)/documents/resources/$(resourceId)).data.status == 'published');
+        allow create: if isStaff()
+          && validResourceRelease(
+            request.resource.data,
+            get(/databases/$(database)/documents/resources/$(resourceId)).data.type,
+            resourceId,
+            releaseId
+          )
+          && request.resource.data.status == 'draft'
+          && request.resource.data.publishedAt == null
+          && request.resource.data.createdAt == request.time
+          && get(/databases/$(database)/documents/resources/$(resourceId)).data.status
+            in ['draft', 'published'];
+        allow update: if isStaff()
+          && resource.data.status == 'draft'
+          && validResourceRelease(
+            request.resource.data,
+            get(/databases/$(database)/documents/resources/$(resourceId)).data.type,
+            resourceId,
+            releaseId
+          )
+          && request.resource.data.status == 'published'
+          && request.resource.data.createdAt == resource.data.createdAt
+          && request.resource.data.publishedAt == request.time
+          && request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['status', 'publishedAt']);
+        allow delete: if isStaff() && resource.data.status == 'draft';
+      }
+    }
+
+    match /users/{userId}/bookmarks/{resourceId} {
+      allow get, list: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.data.keys().hasAll([
+          'resourceId',
+          'resourceTitle',
+          'createdAt',
+          'updatedAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'resourceId',
+          'resourceTitle',
+          'createdAt',
+          'updatedAt'
+        ])
+        && request.resource.data.resourceId == resourceId
+        && request.resource.data.resourceTitle is string
+        && request.resource.data.resourceTitle.size() >= 1
+        && request.resource.data.resourceTitle.size() <= 100
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.updatedAt == request.time
+        && publishedResource(resourceId);
+      allow update: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.data.keys().hasAll([
+          'resourceId',
+          'resourceTitle',
+          'createdAt',
+          'updatedAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'resourceId',
+          'resourceTitle',
+          'createdAt',
+          'updatedAt'
+        ])
+        && request.resource.data.resourceId == resourceId
+        && request.resource.data.resourceTitle is string
+        && request.resource.data.resourceTitle.size() >= 1
+        && request.resource.data.resourceTitle.size() <= 100
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.updatedAt == request.time
+        && publishedResource(resourceId);
+      allow delete: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /users/{userId}/downloadHistory/{historyId} {
+      allow get, list: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.data.keys().hasAll([
+          'resourceId',
+          'releaseId',
+          'resourceTitle',
+          'version',
+          'downloadedAt'
+        ])
+        && request.resource.data.keys().hasOnly([
+          'resourceId',
+          'releaseId',
+          'resourceTitle',
+          'version',
+          'downloadedAt'
+        ])
+        && request.resource.data.resourceId is string
+        && request.resource.data.resourceId.size() >= 1
+        && request.resource.data.resourceId.size() <= 80
+        && request.resource.data.releaseId is string
+        && request.resource.data.releaseId.size() >= 1
+        && request.resource.data.releaseId.size() <= 100
+        && request.resource.data.resourceTitle is string
+        && request.resource.data.resourceTitle.size() >= 1
+        && request.resource.data.resourceTitle.size() <= 100
+        && request.resource.data.version is string
+        && request.resource.data.version.size() <= 32
+        && request.resource.data.downloadedAt == request.time
+        && publishedRelease(request.resource.data.resourceId, request.resource.data.releaseId)
+        && get(/databases/$(database)/documents/resources/$(request.resource.data.resourceId)/releases/$(request.resource.data.releaseId)).data.version
+          == request.resource.data.version;
+      allow update: if false;
+      allow delete: if request.auth != null && request.auth.uid == userId;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

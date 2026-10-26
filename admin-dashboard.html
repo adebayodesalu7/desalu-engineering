@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0912">
+    <title>Admin dashboard | Desalu Engineering</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin-dashboard.css">
+    <script type="module" src="admin-dashboard.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav page-width" aria-label="Staff navigation">
+            <a class="brand" href="index.html" aria-label="Desalu Engineering home">
+                <span class="brand-mark" aria-hidden="true">D</span>
+                <span>DESALU<span class="brand-light"> ENGINEERING</span></span>
+            </a>
+            <div class="admin-nav-actions">
+                <a class="text-link" href="publishing-guide.html">Publishing guide <span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="index.html">View website <span aria-hidden="true">↗</span></a>
+                <button class="button button-outline admin-signout" id="admin-dashboard-signout" type="button" hidden>Sign out</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="admin-main page-width staff-dashboard-main">
+        <section class="admin-welcome" aria-labelledby="admin-dashboard-title">
+            <div class="admin-heading">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> DESALU ENGINEERING / STAFF WORKSPACE</p>
+                    <h1 id="admin-dashboard-title">Admin dashboard</h1>
+                    <p id="admin-dashboard-intro">A secure home for inquiries and resource releases.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="staff-dashboard-content" id="staff-dashboard-content" hidden aria-label="Staff tools">
+            <p class="admin-status" id="admin-dashboard-status" role="status" aria-live="polite"></p>
+            <nav class="dashboard-section-nav" aria-label="Dashboard sections">
+                <a href="#dashboard-overview">Overview</a>
+                <a href="admin.html">Inquiries</a>
+                <a href="admin-resources.html">Publishing</a>
+                <a href="admin-library.html">Resources</a>
+                <a href="admin-review.html">Review queue</a>
+                <a href="resources.html">Public library</a>
+                <a href="#dashboard-analytics">Analytics</a>
+            </nav>
+
+            <section class="dashboard-personalization" aria-label="Dashboard layout controls">
+                <p>Arrange your dashboard widgets with the move buttons or drag them into place. Your layout is private to your staff account.</p>
+                <div class="dashboard-layout-actions">
+                    <button class="button button-outline" id="dashboard-save-layout" type="button">Save layout</button>
+                    <button class="button button-outline" id="dashboard-reset-layout" type="button">Reset layout</button>
+                    <span id="dashboard-layout-status" role="status" aria-live="polite"></span>
+                </div>
+            </section>
+
+            <div class="dashboard-widgets" id="dashboard-widgets">
+            <section class="dashboard-overview" id="dashboard-overview" aria-labelledby="dashboard-overview-title" data-dashboard-widget="overview">
+                <div class="dashboard-section-heading">
+                    <div>
+                        <p class="eyebrow">AT A GLANCE</p>
+                        <h2 id="dashboard-overview-title">Workspace overview</h2>
+                    </div>
+                    <span class="dashboard-refresh-note">Live Supabase data</span>
+                </div>
+                <div class="dashboard-summary-grid" aria-label="Workspace totals">
+                    <article class="dashboard-summary-card">
+                        <span class="dashboard-summary-label">Published resources</span>
+                        <strong id="dashboard-published-resources">—</strong>
+                    </article>
+                    <article class="dashboard-summary-card">
+                        <span class="dashboard-summary-label">Published releases</span>
+                        <strong id="dashboard-published-releases">—</strong>
+                    </article>
+                    <article class="dashboard-summary-card">
+                        <span class="dashboard-summary-label">Open inquiries</span>
+                        <strong id="dashboard-open-inquiries">—</strong>
+                    </article>
+                    <article class="dashboard-summary-card">
+                        <span class="dashboard-summary-label">Draft releases</span>
+                        <strong id="dashboard-draft-releases">—</strong>
+                    </article>
+                    <article class="dashboard-summary-card">
+                        <span class="dashboard-summary-label">Awaiting release review</span>
+                        <strong id="dashboard-in-review-releases">—</strong>
+                    </article>
+                    <article class="dashboard-summary-card">
+                        <span class="dashboard-summary-label">Pending resource reports</span>
+                        <strong id="dashboard-pending-reports">—</strong>
+                    </article>
+                </div>
+            </section>
+
+            <section class="dashboard-activity-grid" id="dashboard-activity" aria-label="Recent workspace activity" data-dashboard-widget="activity">
+                <article class="dashboard-activity-panel">
+                    <div class="dashboard-section-heading">
+                        <div>
+                            <p class="eyebrow">PRODUCT LIBRARY</p>
+                            <h2>Latest releases</h2>
+                        </div>
+                        <a class="dashboard-inline-link" href="resources.html">View library <span aria-hidden="true">↗</span></a>
+                    </div>
+                    <ol class="dashboard-activity-list" id="dashboard-recent-releases" aria-live="polite">
+                        <li class="dashboard-activity-empty">Loading releases…</li>
+                    </ol>
+                </article>
+                <article class="dashboard-activity-panel">
+                    <div class="dashboard-section-heading">
+                        <div>
+                            <p class="eyebrow">ADMINISTRATION</p>
+                            <h2>Recent staff activity</h2>
+                        </div>
+                        <a class="dashboard-inline-link" href="admin-review.html">Review queue <span aria-hidden="true">↗</span></a>
+                    </div>
+                    <ol class="dashboard-activity-list" id="dashboard-recent-admin-activity" aria-live="polite">
+                        <li class="dashboard-activity-empty">Loading activity…</li>
+                    </ol>
+                </article>
+                <article class="dashboard-activity-panel">
+                    <div class="dashboard-section-heading">
+                        <div>
+                            <p class="eyebrow">CLIENT SERVICES</p>
+                            <h2>Recent inquiries</h2>
+                        </div>
+                        <a class="dashboard-inline-link" href="admin.html">Open inbox <span aria-hidden="true">↗</span></a>
+                    </div>
+                    <ol class="dashboard-activity-list" id="dashboard-recent-inquiries" aria-live="polite">
+                        <li class="dashboard-activity-empty">Loading inquiries…</li>
+                    </ol>
+                </article>
+            </section>
+
+            <section class="dashboard-quick-actions" id="dashboard-quick-actions" aria-labelledby="dashboard-quick-actions-title" data-dashboard-widget="quick-actions">
+                <div class="dashboard-section-heading">
+                    <div>
+                        <p class="eyebrow">SHORTCUTS</p>
+                        <h2 id="dashboard-quick-actions-title">Quick actions</h2>
+                    </div>
+                </div>
+                <div class="staff-tool-grid">
+                    <a class="staff-tool-card" href="admin.html">
+                        <span class="staff-tool-icon" aria-hidden="true">✉</span>
+                        <span class="staff-tool-eyebrow">CLIENT SERVICES</span>
+                        <h2>Review inquiries</h2>
+                        <p>Open requests, update follow-up status, and keep private staff notes.</p>
+                        <span class="staff-tool-link">Open inquiry inbox <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a class="staff-tool-card" href="admin-resources.html">
+                        <span class="staff-tool-icon" aria-hidden="true">＋</span>
+                        <span class="staff-tool-eyebrow">PRODUCT LIBRARY</span>
+                        <h2>Publish a resource</h2>
+                        <p>Choose the WordPress, Android, iOS, or web release workflow.</p>
+                        <span class="staff-tool-link">Choose a publishing workflow <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a class="staff-tool-card" href="admin-library.html">
+                        <span class="staff-tool-icon" aria-hidden="true">▤</span>
+                        <span class="staff-tool-eyebrow">PRODUCT LIBRARY</span>
+                        <h2>Manage releases</h2>
+                        <p>Search resources, review release history, and manage published availability.</p>
+                        <span class="staff-tool-link">Open resource manager <span aria-hidden="true">↗</span></span>
+                    </a>
+                    <a class="staff-tool-card" href="admin-review.html">
+                        <span class="staff-tool-icon" aria-hidden="true">✓</span>
+                        <span class="staff-tool-eyebrow">QUALITY CONTROL</span>
+                        <h2>Review releases</h2>
+                        <p>Approve new releases, send correction notes, and resolve user reports.</p>
+                        <span class="staff-tool-link">Open review queue <span aria-hidden="true">↗</span></span>
+                    </a>
+                </div>
+            </section>
+            <section class="dashboard-analytics" id="dashboard-analytics" aria-labelledby="dashboard-analytics-title" data-dashboard-widget="analytics">
+                <div class="dashboard-section-heading">
+                    <div>
+                        <p class="eyebrow">AGGREGATE ONLY</p>
+                        <h2 id="dashboard-analytics-title">Downloads and storage</h2>
+                        <p class="dashboard-analytics-caption">Reports use aggregate counts. Individual download history remains private to each user until account deletion. Storage history starts when staff opens this report and has no earlier snapshots.</p>
+                    </div>
+                    <span class="dashboard-refresh-note" id="dashboard-analytics-period">Last 30 days</span>
+                </div>
+                <div class="dashboard-analytics-summary" aria-label="Download totals">
+                    <article class="dashboard-summary-card">
+                        <span class="dashboard-summary-label">Downloads, last 30 days</span>
+                        <strong id="dashboard-downloads-current">—</strong>
+                    </article>
+                    <article class="dashboard-summary-card">
+                        <span class="dashboard-summary-label">Downloads, previous 30 days</span>
+                        <strong id="dashboard-downloads-previous">—</strong>
+                    </article>
+                    <article class="dashboard-summary-card">
+                        <span class="dashboard-summary-label">Release bucket storage</span>
+                        <strong id="dashboard-storage-current">—</strong>
+                    </article>
+                </div>
+                <div class="dashboard-analytics-grid">
+                    <section class="dashboard-analytics-panel" aria-labelledby="dashboard-daily-heading">
+                        <h3 id="dashboard-daily-heading">Daily downloads · 30 days</h3>
+                        <div class="dashboard-chart-list" id="dashboard-daily-downloads"></div>
+                    </section>
+                    <section class="dashboard-analytics-panel" aria-labelledby="dashboard-weekly-heading">
+                        <h3 id="dashboard-weekly-heading">Weekly downloads · 12 weeks</h3>
+                        <div class="dashboard-chart-list" id="dashboard-weekly-downloads"></div>
+                    </section>
+                    <section class="dashboard-analytics-panel" aria-labelledby="dashboard-popular-heading">
+                        <h3 id="dashboard-popular-heading">Popular resources · 30 days</h3>
+                        <ol class="dashboard-analytics-list" id="dashboard-popular-resources"></ol>
+                    </section>
+                    <section class="dashboard-analytics-panel" aria-labelledby="dashboard-categories-heading">
+                        <h3 id="dashboard-categories-heading">Category trends · 30 days</h3>
+                        <ol class="dashboard-analytics-list" id="dashboard-category-downloads"></ol>
+                    </section>
+                    <section class="dashboard-analytics-panel" aria-labelledby="dashboard-storage-heading">
+                        <h3 id="dashboard-storage-heading">Observed storage · 30 days</h3>
+                        <div class="dashboard-chart-list" id="dashboard-storage-history"></div>
+                    </section>
+                </div>
+                <p class="admin-status" id="dashboard-analytics-status" role="status" aria-live="polite">Loading aggregate analytics…</p>
+            </section>
+            </div>
+        </section>
+
+        <section class="staff-dashboard-gate" id="admin-dashboard-gate">
+            <p class="admin-status" id="admin-dashboard-status-gate" role="status" aria-live="polite">Checking your staff access…</p>
+            <a class="button" id="admin-dashboard-signin" href="auth.html" hidden>Sign in to the staff account</a>
+        </section>
+    </main>
+</body>
+</html>

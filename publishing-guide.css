@@ -1,0 +1,152 @@
+.publishing-guide-main {
+    max-width: 980px;
+    padding-top: clamp(3rem, 8vw, 6rem);
+    padding-bottom: 6rem;
+}
+
+.publishing-guide-intro {
+    padding-bottom: 2.25rem;
+}
+
+.publishing-guide-intro h1 {
+    max-width: 720px;
+    margin: 0;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 1.04;
+}
+
+.publishing-guide-intro > p:not(.eyebrow) {
+    max-width: 720px;
+    color: #c3bdcb;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.publishing-guide-index {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 1.4rem;
+}
+
+.publishing-guide-index a,
+.publishing-guide-footer a {
+    color: #dab4f0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.publishing-guide-index a {
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 3%);
+    text-decoration: none;
+}
+
+.publishing-guide-index a:hover,
+.publishing-guide-index a:focus-visible {
+    border-color: rgb(200 139 240 / 38%);
+    background: rgb(152 80 211 / 12%);
+}
+
+.publishing-guide-section {
+    margin-top: 1.1rem;
+    padding: clamp(1.1rem, 3vw, 1.75rem);
+    border: 1px solid rgb(255 255 255 / 9%);
+    border-radius: 16px;
+    background:
+        radial-gradient(ellipse at 100% 0%, rgb(164 83 210 / 10%), transparent 48%),
+        linear-gradient(145deg, #17131f, #100d17 70%);
+    scroll-margin-top: 100px;
+}
+
+.publishing-guide-section > .eyebrow,
+.publishing-guide-title .eyebrow {
+    margin: 0 0 0.35rem;
+    color: #b59bc9;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.publishing-guide-section h2 {
+    margin: 0;
+    font-family: Manrope, sans-serif;
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    letter-spacing: -0.035em;
+}
+
+.publishing-guide-title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.publishing-guide-icon {
+    display: grid;
+    width: 46px;
+    height: 46px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgb(192 122 236 / 24%);
+    border-radius: 13px;
+    background: rgb(152 80 211 / 14%);
+    color: #e1b8f3;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.publishing-steps {
+    display: grid;
+    gap: 0.8rem;
+    margin: 0 0 1rem;
+    padding-left: 1.3rem;
+    color: #c6c0d0;
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+.publishing-steps li {
+    padding-left: 0.25rem;
+}
+
+.publishing-steps strong {
+    color: #f0eaf8;
+}
+
+.publishing-guide-callout {
+    margin: 0 0 1rem;
+    padding: 0.8rem 0.95rem;
+    border-left: 3px solid #c58be7;
+    background: rgb(152 80 211 / 9%);
+    color: #e5d2f1;
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+.publishing-guide-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.publishing-guide-index a:focus-visible,
+.publishing-guide-footer a:focus-visible {
+    outline: 2px solid #e8bcff;
+    outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+    .publishing-guide-main {
+        padding-top: 3rem;
+    }
+
+    .publishing-guide-section .button {
+        width: 100%;
+    }
+}

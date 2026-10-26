@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0912">
+    <title>Review queue | Desalu Engineering</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin-dashboard.css">
+    <link rel="stylesheet" href="admin-library.css">
+    <script type="module" src="admin-dashboard.js"></script>
+    <script type="module" src="admin-review.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav page-width" aria-label="Staff navigation">
+            <a class="brand" href="index.html" aria-label="Desalu Engineering home">
+                <span class="brand-mark" aria-hidden="true">D</span>
+                <span>DESALU<span class="brand-light"> ENGINEERING</span></span>
+            </a>
+            <div class="admin-nav-actions">
+                <a class="text-link" href="admin-dashboard.html">Admin dashboard <span aria-hidden="true">↗</span></a>
+                <a class="text-link" href="admin-library.html">Resource manager <span aria-hidden="true">↗</span></a>
+                <button class="button button-outline admin-signout" id="admin-dashboard-signout" type="button" hidden>Sign out</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="admin-main page-width staff-dashboard-main">
+        <section class="admin-welcome" aria-labelledby="review-title">
+            <div class="admin-heading">
+                <div>
+                    <p class="eyebrow"><span class="eyebrow-dot"></span> DESALU ENGINEERING / QUALITY CONTROL</p>
+                    <h1 id="review-title">Review queue</h1>
+                    <p>Check release packages and user reports before approving, rejecting, or resolving them.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="staff-dashboard-content" id="staff-dashboard-content" hidden aria-label="Review queue">
+            <p class="admin-status" id="admin-dashboard-status" role="status" aria-live="polite"></p>
+            <nav class="dashboard-section-nav" aria-label="Dashboard sections">
+                <a href="admin-dashboard.html">Overview</a>
+                <a href="admin.html">Inquiries</a>
+                <a href="admin-resources.html">Publishing</a>
+                <a href="admin-library.html">Resources</a>
+                <a href="admin-review.html" aria-current="page">Review queue</a>
+                <a href="publishing-guide.html">Publishing guide</a>
+            </nav>
+
+            <section class="library-resource-section" aria-labelledby="review-releases-heading">
+                <div class="dashboard-section-heading">
+                    <div><p class="eyebrow">PACKAGE APPROVAL</p><h2 id="review-releases-heading">Releases awaiting review</h2></div>
+                </div>
+                <p class="admin-status" id="review-release-status" role="status" aria-live="polite">Loading release queue…</p>
+                <div class="review-queue-list" id="review-release-list"></div>
+            </section>
+
+            <section class="library-resource-section" aria-labelledby="review-reports-heading">
+                <div class="dashboard-section-heading">
+                    <div><p class="eyebrow">USER REPORTS</p><h2 id="review-reports-heading">Resource reports</h2></div>
+                </div>
+                <p class="admin-status" id="review-report-status" role="status" aria-live="polite">Loading reports…</p>
+                <div class="review-queue-list" id="review-report-list"></div>
+            </section>
+
+            <section class="library-resource-section" aria-labelledby="activity-log-heading">
+                <div class="dashboard-section-heading">
+                    <div><p class="eyebrow">ADMINISTRATOR ACTIONS</p><h2 id="activity-log-heading">Recent activity</h2></div>
+                </div>
+                <p class="admin-status" id="review-activity-status" role="status" aria-live="polite">Loading activity…</p>
+                <ol class="dashboard-activity-list" id="review-activity-list" aria-live="polite"></ol>
+            </section>
+        </section>
+
+        <section class="staff-dashboard-gate" id="admin-dashboard-gate">
+            <p class="admin-status" id="admin-dashboard-status-gate" role="status" aria-live="polite">Checking your staff access…</p>
+            <a class="button" id="admin-dashboard-signin" href="auth.html" hidden>Sign in to the staff account</a>
+        </section>
+    </main>
+</body>
+</html>
